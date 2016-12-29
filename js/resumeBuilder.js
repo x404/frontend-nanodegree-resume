@@ -37,12 +37,14 @@ var work = {
 		{
 			"position" : "freelance",
 			"employer" : "proverstka",
-			"years" : 10
+			"years" : 10,
+			"title" : "general work"
 		},
 		{
 			"position" : "developer",
 			"employer" : "promarmatura",
-			"years" : 4
+			"years" : 4,
+			"title" : "secondary work"
 		}
 	]
 };
@@ -85,12 +87,7 @@ var education = {
 	]
 }
 
-// console.log(work.jobs[0].position);
-
 // $('#main').append(work.jobs[0].position).append(education.school[0].name);
-
-
-// console.log(document.getElementsByClassName("text-atom")[0]);
 
 if (bio.skills.length > 0){
 	$('#header').append(HTMLskillsStart);
@@ -106,5 +103,20 @@ if (bio.skills.length > 0){
 
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
 	$('#skills').append(formattedSkill);
+}
+
+
+
+// jobs
+for (job in work.jobs){
+	// HTMLworkStart.append(key);
+
+	$('#workExperience').append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+	$('.work-entry:last').append(formattedEmployerTitle);
 }
 
